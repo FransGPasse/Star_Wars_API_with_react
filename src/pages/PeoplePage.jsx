@@ -1,32 +1,27 @@
 //Importerar allt jag behöver
 import { useState, useEffect } from "react";
-import ListGroup from "react-bootstrap/ListGroup";
 import API from "../services/API";
+import ListGroup from "react-bootstrap/ListGroup";
 
 //Skapar min PeoplePage-komponent
 const PeoplePage = () => {
-  const [people, SetPeople] = useState([]);
+  const [people, setPeople] = useState("");
 
   const getPeopleFromAPI = async () => {
     //Hämtar alla karaktärer från API:n
     const data = await API.getPeopleFromAPI();
-
-    SetPeople(data);
+    setPeople(data);
   };
 
   useEffect(() => {
     getPeopleFromAPI();
   }, []);
 
-  console.log(people);
-
-  console.log(people.results);
+  /*  Här försökte jag först skapa en variabel med de mappade karaktärerna och sen sätta ut de som props men fick det ej att funka. Eller snarare, det funkade men bara enstaka gånger
 
   const mappedPeople = people.results.map((character) => {
-    return character.name;
+    return character;
   });
-
-  console.log("Här är mappedPeople:", mappedPeople);
 
   return (
     <div className="people-page">
@@ -34,11 +29,25 @@ const PeoplePage = () => {
       {mappedPeople.length > 0 && (
         <ListGroup>
           {mappedPeople.map((character) => (
-            <ListGroup.Item>{character}</ListGroup.Item>
+            <ListGroup.Item>{character.name}</ListGroup.Item>
           ))}
         </ListGroup>
       )}
       {mappedPeople.length === 0 && <p>No characters found...</p>}
+    </div>
+  );
+}; */
+
+  return (
+    <div className="people-page">
+      <h1>Welcome to the Star Wars API, built with React!</h1>
+      {people && (
+        <ListGroup>
+          {people.results.map((character) => (
+            <ListGroup.Item>{character.name}</ListGroup.Item>
+          ))}
+        </ListGroup>
+      )}
     </div>
   );
 };

@@ -3,14 +3,13 @@ import axios from "axios";
 const BASE_URL = "https://swapi.dev/api/";
 
 const getPeopleFromAPI = async () => {
-  const response = await axios.get(`${BASE_URL}people/`);
-
-  return response.data;
+  const res = await axios.get(`${BASE_URL}people`);
+  return res.data;
 };
 
 const getPersonFromAPI = async (id) => {
-  const response = await fetch("https://swapi.dev/api/people");
-  return response.data;
+  const res = await axios.get(`${BASE_URL}people/${id}`);
+  return res.data;
 };
 
 //Johans helper function för att
