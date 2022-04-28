@@ -20,26 +20,15 @@ const PeoplePage = () => {
     getPeopleFromAPI();
   }, []);
 
-  /*  Här försökte jag först skapa en variabel med de mappade karaktärerna och sen sätta ut de som props men fick det ej att funka. Eller snarare, det funkade men bara enstaka gånger
+  //Johans helper function för att få ut ett ID från URL:n, tack så mycket
+  const getIDFromURL = (url) => {
+    const [_endpoint, id] = url
+      .replace("https://swapi.dev/api/people", "")
+      .slice(0, -1)
+      .split("/");
 
-  const mappedPeople = people.results.map((character) => {
-    return character;
-  });
-
-  return (
-    <div className="people-page">
-      <h1>Welcome to the Star Wars API, built with React!</h1>
-      {mappedPeople.length > 0 && (
-        <ListGroup>
-          {mappedPeople.map((character) => (
-            <ListGroup.Item>{character.name}</ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
-      {mappedPeople.length === 0 && <p>No characters found...</p>}
-    </div>
-  );
-}; */
+    return id;
+  };
 
   return (
     <div className="people-card bg-dark">
@@ -52,9 +41,8 @@ const PeoplePage = () => {
             <Card>
               <Card.Header>
                 <Card.Title
-                  action
                   as={Link}
-                  to={`https://swapi.dev/api/people/`}
+                  to={`/people/${getIDFromURL(character.url)}`}
                 >
                   {character.name}
                 </Card.Title>

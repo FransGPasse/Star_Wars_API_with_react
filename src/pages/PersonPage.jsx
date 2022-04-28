@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 //Skapar min PersonPage-komponent
 const PersonPage = () => {
   const [person, setPerson] = useState();
-  const { id } = useParams();
+  const params = useParams();
 
   const getPersonFromAPI = async (id) => {
     //Hämtar datan från API-hämtaren
@@ -17,8 +17,8 @@ const PersonPage = () => {
   };
 
   useEffect(() => {
-    getPersonFromAPI(id);
-  }, [id]);
+    getPersonFromAPI(params.id);
+  }, [params.id]);
 
   if (!person) {
     return <p>There's no character with that ID...</p>;

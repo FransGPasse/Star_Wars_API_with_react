@@ -14,7 +14,6 @@ function App() {
         <Route path="/people/:id" element={<PersonPage />} />
         <Route path="/films" element={<AllFilmsPage />} />
         <Route path="/films/:id" element={<SingleFilmPage />} />
-        SingleFilmPage
       </Routes>
     </div>
   );

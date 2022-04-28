@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 //Skapar min SingleFilmPage-komponent
 const SingleFilmPage = () => {
   const [film, setFilm] = useState();
-  const { id } = useParams();
+  const params = useParams();
 
   const getFilmFromAPI = async (id) => {
     //Hämtar datan från API-hämtaren
@@ -17,8 +17,8 @@ const SingleFilmPage = () => {
   };
 
   useEffect(() => {
-    getFilmFromAPI(id);
-  }, [id]);
+    getFilmFromAPI(params.id);
+  }, [params.id]);
 
   if (!film) {
     return <p>Loading...</p>;
@@ -26,13 +26,20 @@ const SingleFilmPage = () => {
 
   return (
     <div className="person-page">
-      <h1>Here's the Star Wars character!</h1>
+      <h1>Here's the Star Wars movie!</h1>
       <div className="card-container">
         <Card className="person-card">
           <Card.Header>
             <Card.Title>{film.title}</Card.Title>
           </Card.Header>
-          <Card.Body></Card.Body>
+          <Card.Body>
+            <ListGroup>
+              <ListGroup.Item>Director: {film.director}</ListGroup.Item>
+              <ListGroup.Item>Episode: {film.episode_id}</ListGroup.Item>
+              <ListGroup.Item></ListGroup.Item>
+              <ListGroup.Item></ListGroup.Item>
+            </ListGroup>
+          </Card.Body>
         </Card>
       </div>
     </div>
