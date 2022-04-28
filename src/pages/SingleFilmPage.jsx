@@ -5,23 +5,23 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
-//Skapar min PersonPage-komponent
-const PersonPage = () => {
-  const [person, setPerson] = useState();
+//Skapar min SingleFilmPage-komponent
+const SingleFilmPage = () => {
+  const [film, setFilm] = useState();
   const { id } = useParams();
 
-  const getPersonFromAPI = async (id) => {
+  const getFilmFromAPI = async (id) => {
     //Hämtar datan från API-hämtaren
-    const data = await API.getPersonFromAPI(id);
-    setPerson(data);
+    const data = await API.getFilmFromAPI(id);
+    setFilm(data);
   };
 
   useEffect(() => {
-    getPersonFromAPI(id);
+    getFilmFromAPI(id);
   }, [id]);
 
-  if (!person) {
-    return <p>There's no character with that ID...</p>;
+  if (!film) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -30,18 +30,13 @@ const PersonPage = () => {
       <div className="card-container">
         <Card className="person-card">
           <Card.Header>
-            <Card.Title>{person.name}</Card.Title>
+            <Card.Title>{film.title}</Card.Title>
           </Card.Header>
-          <Card.Body>
-            <ListGroup>
-              <ListGroup.Item>Gender: {person.gender}</ListGroup.Item>
-              <ListGroup.Item>Birth year: {person.birth_year}</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
+          <Card.Body></Card.Body>
         </Card>
       </div>
     </div>
   );
 };
 
-export default PersonPage;
+export default SingleFilmPage;

@@ -12,7 +12,17 @@ const getPersonFromAPI = async (id) => {
   return res.data;
 };
 
-//Johans helper function för att
+const getFilmsFromAPI = async () => {
+  const res = await axios.get(`${BASE_URL}films`);
+  return res.data;
+};
+
+const getFilmFromAPI = async (id) => {
+  const res = await axios.get(`${BASE_URL}films/${id}`);
+  return res.data;
+};
+
+//Johans helper function för att få ut ett ID från URL:n
 const getIdFromUrl = (url) => {
   const [_endpoint, id] = url
     .replace("https://swapi.dev/api/", "")
@@ -25,5 +35,7 @@ const getIdFromUrl = (url) => {
 export default {
   getPeopleFromAPI,
   getPersonFromAPI,
+  getFilmsFromAPI,
+  getFilmFromAPI,
   getIdFromUrl,
 };
