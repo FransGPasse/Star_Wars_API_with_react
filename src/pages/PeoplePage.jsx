@@ -1,18 +1,18 @@
 //Importerar allt jag behöver
 import { useState, useEffect } from "react";
 import API from "../services/API";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 //Skapar min PeoplePage-komponent
 const PeoplePage = () => {
   const [people, setPeople] = useState("");
   const [page, setPage] = useState(0);
+  const [buttonValue, setButtonValue] = useState("");
 
+  //Hämtar datan från API-hämtaren i en async-funktion
   const getPeopleFromAPI = async () => {
-    //Hämtar datan från API-hämtaren
     const data = await API.getPeopleFromAPI();
+    //Sätter datan till "setPeople"
     setPeople(data);
   };
 
@@ -30,38 +30,62 @@ const PeoplePage = () => {
     return id;
   };
 
+  const getNextPage = async (endpoint) => {
+    const data = await API.getNextPage(endpoint);
+    setPeople(data);
+  };
+
+  useEffect(() => {
+    if (!people) {
+      return;
+    }
+    if (buttonValue === "next") {
+      getNextPage(people.next);
+    } else if (buttonValue === "previous") {
+      getNextPage(people.previous);
+    }
+    setButtonValue("");
+  }, [page]);
+
   return (
-    <div className="people-card bg-dark">
-      <h1 className="people-card bg-dark text-light">
-        Here's a list of Star Wars characters!
-      </h1>
-      <div className="card-container">
+    <div>
+      <div className="card-wrapper">
         {people &&
           people.results.map((character) => (
-            <Card>
-              <Card.Header>
-                <Card.Title
-                  as={Link}
-                  to={`/people/${getIDFromURL(character.url)}`}
-                >
-                  {character.name}
-                </Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <ListGroup>
-                  <ListGroup.Item className="text-info">
-                    Gender: {character.gender}
-                  </ListGroup.Item>
-                  <ListGroup.Item className="text-info">
-                    Birth year: {character.birth_year}
-                  </ListGroup.Item>
-                  <ListGroup.Item className="text-info">
-                    Hair color: {character.hair_color}
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card.Body>
-            </Card>
+            <div className="card">
+              <h2 className="name">{character.name}</h2>
+
+              <Link
+                className="button"
+                to={`/people/${getIDFromURL(character.url)}`}
+              >
+                Read more...
+              </Link>
+            </div>
           ))}
+      </div>
+      <div className="pagination">
+        <button
+          onClick={() => {
+            setPage((previousValue) => previousValue - 1);
+            setButtonValue("previous");
+          }}
+          disabled={page === 0}
+          className="button"
+        >
+          Previous page
+        </button>
+        <p className="page-number">{page}</p>
+        <button
+          onClick={() => {
+            setPage((previousValue) => previousValue + 1);
+            setButtonValue("next");
+          }}
+          disabled={people.count / 10 - 1 <= page}
+          className="button"
+        >
+          Next page
+        </button>
       </div>
     </div>
   );

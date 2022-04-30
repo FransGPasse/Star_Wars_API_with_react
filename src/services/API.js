@@ -22,9 +22,15 @@ const getFilmFromAPI = async (id) => {
   return res.data;
 };
 
+const getNextPage = async (endpoint) => {
+  const res = await axios.get(`${endpoint}`);
+  return res.data;
+};
+
 export default {
   getPeopleFromAPI,
   getPersonFromAPI,
   getFilmsFromAPI,
   getFilmFromAPI,
+  getNextPage,
 };
