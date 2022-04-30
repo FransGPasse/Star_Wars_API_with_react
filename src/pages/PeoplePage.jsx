@@ -30,11 +30,13 @@ const PeoplePage = () => {
     return id;
   };
 
+  //Skapar en funktion som hämtar nästa sida med karaktärer
   const getNextPage = async (endpoint) => {
     const data = await API.getNextPage(endpoint);
     setPeople(data);
   };
 
+  //Bläddrar mellan sidorna
   useEffect(() => {
     if (!people) {
       return;
@@ -54,6 +56,12 @@ const PeoplePage = () => {
           people.results.map((character) => (
             <div className="card">
               <h2 className="name">{character.name}</h2>
+              {character.films.length <= 1 && (
+                <p>Appears in {character.films.length} movie</p>
+              )}
+              {character.films.length > 1 && (
+                <p>Appears in {character.films.length} movies</p>
+              )}
 
               <Link
                 className="button"
