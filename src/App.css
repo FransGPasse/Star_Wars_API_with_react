@@ -40,6 +40,15 @@
   margin-top: 1em;
 }
 
+.link {
+  text-decoration: none;
+  color: var(--clr-sw-yellow);
+}
+
+.link:hover {
+  color: var(--clr-sw-yellow-hover);
+}
+
 .button:not(:disabled):hover,
 .button:not(:disabled):focus {
   color: var(--clr-sw-black);
@@ -72,12 +81,9 @@
   justify-content: space-between;
 }
 
-.nav-link {
-  color: var(--clr-sw-yellow);
-}
-
-.nav-link:hover {
-  color: var(--clr-sw-yellow-hover);
+.nav-link-wrapper > * {
+  margin: 0 1em;
+  text-align: center;
 }
 
 .swapi-link,
@@ -89,6 +95,7 @@
 .swapi-link:hover {
   color: var(--clr-sw-yellow-hover);
 }
+
 .react-link:hover {
   color: #61dbfb;
 }
@@ -116,8 +123,6 @@
 
   color: var(--clr-sw-yellow);
   background-color: var(--clr-sw-black);
-
-  text-align: center;
 
   padding: 1.5em;
   border-radius: 15px;

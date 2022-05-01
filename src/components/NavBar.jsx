@@ -11,10 +11,10 @@ function NavBar() {
       </NavLink>
 
       <div className="nav-link-wrapper">
-        <NavLink to="/people" className="nav-link">
+        <NavLink to="/people" className="link">
           List of all characters
         </NavLink>
-        <NavLink to="/films" className="nav-link">
+        <NavLink to="/films" className="link">
           List of all films
         </NavLink>
       </div>

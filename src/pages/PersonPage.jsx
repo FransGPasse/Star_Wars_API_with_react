@@ -55,7 +55,7 @@ const PersonPage = () => {
           {films &&
             films.map((film) => (
               <Link to={`/films/${getIDFromURL(film)}`}>
-                <li>Movie {getIDFromURL(film)}</li>
+                <li className="link">Movie {getIDFromURL(film)}</li>
               </Link>
             ))}
         </ul>

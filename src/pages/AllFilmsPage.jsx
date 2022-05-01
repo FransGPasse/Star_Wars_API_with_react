@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import API from "../services/API";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 //Skapar min AllFilmsPage-komponent
 const AllFilmsPage = () => {
@@ -35,19 +34,16 @@ const AllFilmsPage = () => {
       <div className="card-container">
         {films &&
           films.results.map((film) => (
-            <Card className="films-card">
-              <Card.Header>
-                <Card.Title as={Link} to={`/films/${getIDFromURL(film.url)}`}>
-                  {film.title}
-                </Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <ListGroup>
-                  <ListGroup.Item></ListGroup.Item>
-                  <ListGroup.Item></ListGroup.Item>
-                </ListGroup>
-              </Card.Body>
-            </Card>
+            <div className="card">
+              <h2 className="name">{film.title}</h2>
+              <ul>
+                <li>Episode {film.episode_id}</li>
+                <li>Director: {film.director}</li>
+                <li>Released on {film.release_date}</li>
+                <li>"Opening crawl": {film.opening_crawl}</li>
+                <li>Producers: {film.producer}</li>
+              </ul>
+            </div>
           ))}
       </div>
     </div>
