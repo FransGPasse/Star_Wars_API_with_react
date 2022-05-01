@@ -27,7 +27,7 @@ const PeoplePage = () => {
       .slice(0, -1)
       .split("/");
 
-    return id;
+    return id + _endpoint;
   };
 
   //Skapar en funktion som hämtar nästa sida med karaktärer
@@ -47,14 +47,14 @@ const PeoplePage = () => {
       getNextPage(people.previous);
     }
     setButtonValue("");
-  }, [page]);
+  }, [page, buttonValue, people]);
 
   return (
     <div>
       <div className="card-wrapper">
         {people &&
           people.results.map((character) => (
-            <div className="card">
+            <div className="card" key={character.name}>
               <h2 className="name">{character.name}</h2>
               {character.films.length <= 1 && (
                 <p>Appears in {character.films.length} movie</p>

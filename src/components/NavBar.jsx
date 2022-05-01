@@ -5,9 +5,7 @@ function NavBar() {
   return (
     <div className="nav-bar">
       <NavLink to="/">
-        <a href="">
-          <img src={logo} alt="Star Wars-logo" className="logo" />
-        </a>
+        <img src={logo} alt="Star Wars-logo" className="logo" />
       </NavLink>
 
       <div className="nav-link-wrapper">
