@@ -7,7 +7,7 @@ function HomePage() {
         <a
           href="https://swapi.dev/"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
           className="swapi-link"
         >
           The Star Wars API
@@ -16,7 +16,7 @@ function HomePage() {
         <a
           href="https://reactjs.org/"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
           className="react-link"
         >
           React
