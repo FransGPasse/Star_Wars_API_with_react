@@ -136,6 +136,10 @@ span {
   height: 84vh;
 }
 
+.films-page {
+  height: 84vh;
+}
+
 .person-page,
 .film-page {
   display: flex;
