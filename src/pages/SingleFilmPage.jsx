@@ -1,9 +1,7 @@
 //Importerar allt jag behöver
 import { useState, useEffect } from "react";
 import API from "../services/API";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useParams } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 //Skapar min SingleFilmPage-komponent
 const SingleFilmPage = () => {
@@ -27,21 +25,22 @@ const SingleFilmPage = () => {
   return (
     <div className="person-page">
       <h1>Here's the Star Wars movie!</h1>
-      <div className="card-container">
-        <Card className="person-card">
-          <Card.Header>
-            <Card.Title>{film.title}</Card.Title>
-          </Card.Header>
-          <Card.Body>
-            <ListGroup>
-              <ListGroup.Item>Director: {film.director}</ListGroup.Item>
-              <ListGroup.Item>Episode: {film.episode_id}</ListGroup.Item>
-              <ListGroup.Item></ListGroup.Item>
-              <ListGroup.Item></ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
-      </div>
+
+      <h2 className="name">{film.title}</h2>
+      <ul>
+        <li>Episode {film.episode_id}</li>
+        <br />
+        <li>Director: {film.director}</li>
+        <li>Producers: {film.producer}</li>
+        <br />
+        <li>Released on {film.release_date}</li>
+        <br />
+        <li>"Opening crawl": {film.opening_crawl}</li>
+        <br />
+      </ul>
+      <Link to="/films" className="button">
+        Back to list of characters
+      </Link>
     </div>
   );
 };

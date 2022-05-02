@@ -1,7 +1,6 @@
 //Importerar allt jag behöver
 import { useState, useEffect } from "react";
 import API from "../services/API";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
 
 //Skapar min AllFilmsPage-komponent
@@ -25,7 +24,7 @@ const AllFilmsPage = () => {
       .slice(0, -1)
       .split("/");
 
-    return id;
+    return id + _endpoint;
   };
 
   return (
@@ -34,15 +33,14 @@ const AllFilmsPage = () => {
       <div className="card-container">
         {films &&
           films.results.map((film) => (
-            <div className="card">
+            <div className="card" key={film.title}>
               <h2 className="name">{film.title}</h2>
               <ul>
-                <li>Episode {film.episode_id}</li>
-                <li>Director: {film.director}</li>
-                <li>Released on {film.release_date}</li>
-                <li>"Opening crawl": {film.opening_crawl}</li>
-                <li>Producers: {film.producer}</li>
+                <p>Episode {film.episode_id}</p>
               </ul>
+              <Link className="button" to={`/films/${getIDFromURL(film.url)}`}>
+                Read more...
+              </Link>
             </div>
           ))}
       </div>
