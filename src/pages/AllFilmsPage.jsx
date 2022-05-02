@@ -28,9 +28,9 @@ const AllFilmsPage = () => {
   };
 
   return (
-    <div className="films-page">
+    <div className="page movie-page">
       <h1>Here's a list of Star Wars films!</h1>
-      <div className="card-container">
+      <div className="films-card-wrapper">
         {films &&
           films.results.map((film) => (
             <div className="card" key={film.title}>

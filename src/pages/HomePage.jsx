@@ -1,8 +1,8 @@
 function HomePage() {
   return (
-    <div>
+    <div className="page home-page">
       <h1>Welcome to the Star Wars encyclopedia</h1>
-      <h3>
+      <h4>
         Powered by{" "}
         <a
           href="https://swapi.dev/"
@@ -21,7 +21,7 @@ function HomePage() {
         >
           React
         </a>
-      </h3>
+      </h4>
     </div>
   );
 }

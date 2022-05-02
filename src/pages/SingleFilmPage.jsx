@@ -33,7 +33,7 @@ const SingleFilmPage = () => {
   }
 
   return (
-    <div className="person-page">
+    <div className="page person-page">
       <h1>Here's the Star Wars movie!</h1>
 
       <h2 className="name">{film.title}</h2>
@@ -46,7 +46,6 @@ const SingleFilmPage = () => {
         <li>Released on {film.release_date}</li>
         <br />
         <li>"Opening crawl": {film.opening_crawl}</li>
-        {/*         <li>Characters {film.characters}</li> */}
         <br />
       </ul>
       <ul className="char-info">

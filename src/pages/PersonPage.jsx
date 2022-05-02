@@ -35,7 +35,7 @@ const PersonPage = () => {
   }
 
   return (
-    <div>
+    <div className="page">
       <div className="card char-card">
         <h2>{person.name}</h2>
         <ul className="char-info">

@@ -50,8 +50,8 @@ const PeoplePage = () => {
   }, [page, buttonValue, people]);
 
   return (
-    <div>
-      <div className="card-wrapper">
+    <div className="page people-page">
+      <div className="people-card-wrapper">
         {people &&
           people.results.map((character) => (
             <div className="card" key={character.name}>
@@ -83,7 +83,9 @@ const PeoplePage = () => {
         >
           Previous page
         </button>
-        <p className="page-number">{page}</p>
+        <p>
+          Page {page + 1} / {Math.ceil(people.count / 10)}
+        </p>
         <button
           onClick={() => {
             setPage((previousValue) => previousValue + 1);
