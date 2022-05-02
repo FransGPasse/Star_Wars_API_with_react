@@ -54,7 +54,7 @@ const PersonPage = () => {
           <h3>Appears in: </h3>
           {films &&
             films.map((film) => (
-              <Link to={`/films/${getIDFromURL(film)}`}>
+              <Link to={`/films/${getIDFromURL(film)}`} key={film}>
                 <li className="link">Movie {getIDFromURL(film)}</li>
               </Link>
             ))}

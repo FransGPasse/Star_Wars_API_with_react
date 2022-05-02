@@ -18,6 +18,16 @@ const SingleFilmPage = () => {
     getFilmFromAPI(params.id);
   }, [params.id]);
 
+  //Johans helper function för att få ut ett ID från URL:n, tack så mycket
+  const getIDFromURL = (url) => {
+    const [_endpoint, id] = url
+      .replace("https://swapi.dev/api/people", "")
+      .slice(0, -1)
+      .split("/");
+
+    return id + _endpoint;
+  };
+
   if (!film) {
     return <p>Loading...</p>;
   }
@@ -36,10 +46,20 @@ const SingleFilmPage = () => {
         <li>Released on {film.release_date}</li>
         <br />
         <li>"Opening crawl": {film.opening_crawl}</li>
+        {/*         <li>Characters {film.characters}</li> */}
         <br />
       </ul>
+      <ul className="char-info">
+        {film &&
+          film.characters.map((character) => (
+            <Link to={`/people/${getIDFromURL(character)}`} key={character}>
+              <li className="link">Character {getIDFromURL(character)}</li>
+            </Link>
+          ))}
+        <li></li>
+      </ul>
       <Link to="/films" className="button">
-        Back to list of characters
+        Back to list of films
       </Link>
     </div>
   );
