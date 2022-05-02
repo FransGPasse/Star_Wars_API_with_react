@@ -27,7 +27,7 @@ const PersonPage = () => {
       .slice(0, -1)
       .split("/");
 
-    return id;
+    return id + _endpoint;
   };
 
   if (!person) {

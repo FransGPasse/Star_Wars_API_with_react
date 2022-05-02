@@ -27,10 +27,12 @@ const getNextPage = async (endpoint) => {
   return res.data;
 };
 
-export default {
+const functions = {
   getPeopleFromAPI,
   getPersonFromAPI,
   getFilmsFromAPI,
   getFilmFromAPI,
   getNextPage,
 };
+
+export default functions;
