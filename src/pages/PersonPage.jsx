@@ -35,20 +35,34 @@ const PersonPage = () => {
   }
 
   return (
-    <div className="page">
-      <div className="card char-card">
-        <h2>{person.name}</h2>
+    <div className="page person-page">
+      <div className="card person-card">
+        <h2 className="name">{person.name}</h2>
         <ul className="char-info">
-          <li>Gender: {person.gender}</li>
+          <li>
+            Gender: <span>{person.gender}</span>
+          </li>
           <br />
-          <li>Height: {person.height} cm</li>
-          <li>Weight: {person.mass} kg</li>
+          <li>
+            Height: <span>{person.height} cm</span>
+          </li>
+          <li>
+            Weight: <span>{person.mass} kg</span>
+          </li>
           <br />
-          <li>Skin color: {person.skin_color}</li>
-          <li>Hair color: {person.hair_color}</li>
-          <li>Eye color: {person.eye_color}</li>
+          <li>
+            Skin color: <span>{person.skin_color}</span>
+          </li>
+          <li>
+            Hair color: <span>{person.hair_color}</span>
+          </li>
+          <li>
+            Eye color: <span>{person.eye_color}</span>
+          </li>
           <br />
-          <li>Birth year: {person.birth_year}</li>
+          <li>
+            Birth year: <span>{person.birth_year}</span>
+          </li>
         </ul>
         <ul className="char-films">
           <h3>Appears in: </h3>
@@ -59,10 +73,10 @@ const PersonPage = () => {
               </Link>
             ))}
         </ul>
-        <Link to="/people" className="button">
-          Back to list of characters
-        </Link>
       </div>
+      <Link to="/people" className="button">
+        Back to list of characters
+      </Link>
     </div>
   );
 };

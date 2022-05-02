@@ -28,16 +28,14 @@ const AllFilmsPage = () => {
   };
 
   return (
-    <div className="page movie-page">
-      <h1>Here's a list of Star Wars films!</h1>
+    <div className="page films-page">
       <div className="films-card-wrapper">
         {films &&
           films.results.map((film) => (
             <div className="card" key={film.title}>
               <h2 className="name">{film.title}</h2>
-              <ul>
-                <p>Episode {film.episode_id}</p>
-              </ul>
+              <h4>Episode {film.episode_id}</h4>
+              <p>Released on {film.release_date}</p>
               <Link className="button" to={`/films/${getIDFromURL(film.url)}`}>
                 Read more...
               </Link>

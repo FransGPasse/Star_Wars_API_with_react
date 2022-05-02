@@ -7,6 +7,7 @@
   font-family: Poppins;
 
   color: var(--clr-sw-yellow);
+  list-style: none;
 }
 
 :root {
@@ -37,6 +38,23 @@
   margin-top: 1em;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  color: var(--clr-sw-yellow);
+  background-color: var(--clr-sw-black);
+
+  padding: 1.5em;
+  border-radius: 15px;
+
+  border: 2px solid var(--clr-sw-yellow);
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
 .button:not(:disabled):hover,
 .button:not(:disabled):focus {
   color: var(--clr-sw-black);
@@ -55,6 +73,10 @@
 
 .link:hover {
   color: var(--clr-sw-yellow-hover);
+}
+
+span {
+  font-weight: bold;
 }
 
 /* Nav bar styles */
@@ -78,7 +100,7 @@
 }
 
 .nav-link-wrapper > * {
-  margin: 0 1em;
+  margin: 0 0.8em;
   text-align: center;
 }
 
@@ -111,7 +133,27 @@
 
   padding: 1em;
 
-  height: 80vh;
+  height: 84vh;
+}
+
+.person-page,
+.film-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-page {
+  text-align: center;
+
+  padding: 1em;
+
+  height: 84vh;
+}
+
+.film-page {
+  padding-top: 1em;
 }
 
 /* Card styles */
@@ -129,31 +171,34 @@
   background: var(--clr-sw-gradient);
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+.films-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 
-  color: var(--clr-sw-yellow);
-  background-color: var(--clr-sw-black);
+  gap: 2em;
+
+  place-content: center;
 
   padding: 1.5em;
-  border-radius: 15px;
 
-  border: 2px solid var(--clr-sw-yellow);
-
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background: var(--clr-sw-gradient);
 }
 
 .name {
   font-size: 1.5em;
   font-weight: bold;
   color: var(--clr-sw-yellow);
+  text-align: center;
 }
 
-.char-card {
-  width: 70%;
+.person-card {
+  width: 65%;
+  margin: auto;
+}
+
+.film-card {
+  width: 85%;
   margin: auto;
 }
 
@@ -161,12 +206,14 @@
   padding-top: 1em;
 }
 
-.char-info {
+.char-info,
+.film-info {
   list-style: none;
 }
 
-.char-films {
-  list-style: none;
+.opening-crawl {
+  text-align: center;
+  font-style: italic;
 }
 
 .pagination {
@@ -176,4 +223,20 @@
 
   background-color: var(--clr-sw-black);
   padding-block: 0.5em;
+}
+
+/* Large tablet and laptop size */
+@media screen and (min-width: 769px) {
+  .film-card {
+    width: 75%;
+    margin: auto;
+  }
+}
+
+/* Desktop size */
+@media screen and (min-width: 1200px) {
+  .film-card {
+    width: 65%;
+    margin: auto;
+  }
 }

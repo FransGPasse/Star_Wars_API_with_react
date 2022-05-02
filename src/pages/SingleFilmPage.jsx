@@ -33,30 +33,37 @@ const SingleFilmPage = () => {
   }
 
   return (
-    <div className="page person-page">
-      <h1>Here's the Star Wars movie!</h1>
-
-      <h2 className="name">{film.title}</h2>
-      <ul>
-        <li>Episode {film.episode_id}</li>
-        <br />
-        <li>Director: {film.director}</li>
-        <li>Producers: {film.producer}</li>
-        <br />
-        <li>Released on {film.release_date}</li>
-        <br />
-        <li>"Opening crawl": {film.opening_crawl}</li>
-        <br />
-      </ul>
-      <ul className="char-info">
-        {film &&
-          film.characters.map((character) => (
-            <Link to={`/people/${getIDFromURL(character)}`} key={character}>
-              <li className="link">Character {getIDFromURL(character)}</li>
-            </Link>
-          ))}
-        <li></li>
-      </ul>
+    <div className="page film-page">
+      <div className="card film-card">
+        <h2 className="name">{film.title}</h2>
+        <h4>Episode {film.episode_id}</h4>
+        <ul className="film-info">
+          <li>
+            Director: <span>{film.director}</span>
+          </li>
+          <li>
+            Producers: <span>{film.producer}</span>
+          </li>
+          <br />
+          <li>
+            Released on: <span>{film.release_date}</span>
+          </li>
+          <br />
+          <p>
+            <span>Opening crawl:</span>
+          </p>
+          <li className="opening-crawl"> "{film.opening_crawl}"</li>
+          <br />
+        </ul>
+        <ul className="char-info">
+          {film &&
+            film.characters.map((character) => (
+              <Link to={`/people/${getIDFromURL(character)}`} key={character}>
+                <li className="link">Character {getIDFromURL(character)}</li>
+              </Link>
+            ))}
+        </ul>
+      </div>
       <Link to="/films" className="button">
         Back to list of films
       </Link>
